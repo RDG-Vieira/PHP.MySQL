@@ -9,14 +9,14 @@
         $matricula = $_POST['matricula'];
         $cpf = $_POST['CPF'];
         $email = $_POST['email'];
-        $endereço = $_POST['endereco'];
+        $endereco = $_POST['endereco'];
             if(isset($nome) && isset($dataNascimento) && isset($curso) && isset($matricula) &&
-             isset($cpf) && isset($email) && isset($endereço)) {
+             isset($cpf) && isset($email) && isset($endereco)) {
         
                 try {
                     //esse primeiro smtm ele guarda os valores nessa variavel
                 $smtm = $conn -> prepare("INSERT INTO aluno  (nome , DataNascimento , Curso , Matricula, CPF, Email, Endereco) 
-                VALUES(:nome , :DataNascimento , :Curso , :Matricula , :CPF, :Email, :Endereço))";
+                VALUES(:nome , :DataNascimento , :Curso , :Matricula , :CPF, :Email, :Endereco))";
 
                 //bindParam faz a ligação do valor da variável com os dados que saram colocados nas colunas do BC.
                 // esse segundo smtm liga os valores as colunas
@@ -26,7 +26,7 @@
                 $smtm -> bindParam(":Matricula" , $matricula);
                 $smtm -> bindParam(":CPF" , $cpf);
                 $smtm -> bindParam(":Email" , $email);
-                $smtm -> bindParam(":Endereco" , $endereço);
+                $smtm -> bindParam(":Endereco" , $endereco);
                 
                 //esse smtm que executa a consulta
                 $stmt -> execute();
